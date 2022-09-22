@@ -20,7 +20,7 @@ class Theme(models.Model):
         return self.name
 
 
-class Message(models.Model):
+class Comment(models.Model):
     content = models.TextField('Содержание')
     theme = models.ForeignKey(Theme, blank=False, null=False, on_delete=models.CASCADE)
     reply_to = models.IntegerField('Ответ на', blank=True, null=True)
