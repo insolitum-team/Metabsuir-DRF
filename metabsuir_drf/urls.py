@@ -1,13 +1,21 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+
 from forum.views import SectionViewSet, ThemeViewSet, CommentViewSet
+
+section_router = routers.SimpleRouter()
+section_router.register(r'sections', SectionViewSet)
+
+theme_router = routers.SimpleRouter()
+theme_router.register(r'themes', ThemeViewSet)
+
+comments_router = routers.SimpleRouter()
+section_router.register(r'comments', CommentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/mb1/sections/', SectionViewSet.as_view({'get': 'list'})),
-    path('api/mb1/sections/<int:pk>/', SectionViewSet.as_view({'put': 'update'})),
-    path('api/mb1/themes/', ThemeViewSet.as_view({'get': 'list'})),
-    path('api/mb1/themes/<int:pk>/', ThemeViewSet.as_view({'put': 'update'})),
-    path('api/mb1/comments/', CommentViewSet.as_view({'get': 'list'})),
-    path('api/mb1/comments/<int:pk>/', CommentViewSet.as_view({'post': 'update'})),
+    path('api/mb2/', include(section_router.urls)),
+    path('api/mb2/', include(theme_router.urls)),
+    path('api/mb2/', include(comments_router.urls)),
 ]
