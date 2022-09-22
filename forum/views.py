@@ -1,33 +1,18 @@
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from .models import Section, Theme, Comment
 from .serializers import SectionSerializer, ThemeSerializer, CommentSerializer
 
 
-class SectionApiView(generics.ListAPIView):
+class SectionViewSet(viewsets.ModelViewSet):
     queryset = Section.objects.all()
     serializer_class = SectionSerializer
 
 
-class SectionApiViewRU(generics.RetrieveUpdateAPIView):
-    queryset = Section.objects.all()
-    serializer_class = SectionSerializer
-
-
-class ThemeApiView(generics.ListAPIView):
+class ThemeViewSet(viewsets.ModelViewSet):
     queryset = Theme.objects.all()
     serializer_class = ThemeSerializer
 
 
-class ThemeApiViewRU(generics.RetrieveUpdateAPIView):
-    queryset = Theme.objects.all()
-    serializer_class = ThemeSerializer
-
-
-class CommentApiView(generics.ListAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-
-
-class CommentApiViewRU(generics.RetrieveUpdateAPIView):
+class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
