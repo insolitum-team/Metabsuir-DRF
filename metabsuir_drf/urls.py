@@ -1,17 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers
 
-from forum.views import SectionViewSet, ThemeViewSet, CommentViewSet
+from forum.routers import section_router, theme_router, comments_router
 
-section_router = routers.SimpleRouter()
-section_router.register(r'sections', SectionViewSet)
-
-theme_router = routers.SimpleRouter()
-theme_router.register(r'themes', ThemeViewSet)
-
-comments_router = routers.SimpleRouter()
-section_router.register(r'comments', CommentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

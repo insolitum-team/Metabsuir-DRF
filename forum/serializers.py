@@ -9,6 +9,8 @@ class SectionSerializer(serializers.ModelSerializer):
 
 
 class ThemeSerializer(serializers.ModelSerializer):
+    author = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Theme
         fields = (
@@ -21,6 +23,8 @@ class ThemeSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    sender = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Comment
         fields = (
