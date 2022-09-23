@@ -15,6 +15,7 @@ section_router.register(r'comments', CommentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('forum.urls')),
     path('api/mb2/', include(section_router.urls)),
     path('api/mb2/', include(theme_router.urls)),
     path('api/mb2/', include(comments_router.urls)),
