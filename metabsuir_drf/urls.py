@@ -7,6 +7,7 @@ from forum.routers import section_router, theme_router, comments_router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/mb2/drf-auth/', include('rest_framework.urls')),
     path('', include('forum.urls')),
     path('api/mb2/', include(section_router.urls)),
     path('api/mb2/', include(theme_router.urls)),
